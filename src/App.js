@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import "./App.css";
 
 // new
-import { StyleSheet, Text, View } from "react-native";
-import {
-  Inject,
-  ScheduleComponent,
-  Day,
-  Week,
-  Month,
-} from "@syncfusion/ej2-react-schedule";
-import "./pages/Calender.css";
-import { registerLicense } from "@syncfusion/ej2-base";
-registerLicense(
-  "ORg4AjUWIQA/Gnt2VVhhQlFaclhJWHxIe0x0RWFbb1d6cV1MY1xBJAtUQF1hS35Xd0NjXX1WcXZXRmlV"
-);
+// import { StyleSheet, Text, View } from "react-native";
+// import {
+//   Inject,
+//   ScheduleComponent,
+//   Day,
+//   Week,
+//   Month,
+// } from "@syncfusion/ej2-react-schedule";
+// import "./pages/Calender.css";
+// import { registerLicense } from "@syncfusion/ej2-base";
+// registerLicense(
+//   "ORg4AjUWIQA/Gnt2VVhhQlFaclhJWHxIe0x0RWFbb1d6cV1MY1xBJAtUQF1hS35Xd0NjXX1WcXZXRmlV"
+// );
 
 import {
   BrowserRouter as Router,
@@ -33,9 +33,8 @@ import Setting from "./pages/Setting";
 export default function App() {
   return (
     <div>
-      <ScheduleComponent>
-        <Inject services={[Day, Week, Month]} />
-      </ScheduleComponent>
+     
+      <h1>asda</h1>
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -49,11 +48,11 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+// });
