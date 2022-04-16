@@ -29,6 +29,7 @@ import Login from "./pages/Login";
 import Map from "./pages/Map";
 import Calendar from "./pages/Calendar";
 import Setting from "./pages/Setting";
+import Map2 from "./pages/Map2";
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/map" element={<Map />}></Route>
           <Route path="/setting" element={<Setting />}></Route>
           <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/map2" element={<Map2 />}></Route>
         </Routes>
       </Router>
     </div>

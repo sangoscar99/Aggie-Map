@@ -21,16 +21,16 @@ import {
 } from "@react-google-maps/api";
 import { useRef, useState } from "react";
 
-const center = { lat: 38.534550, lng: -121.752060 };
+const center = { lat: 38.53455, lng: -121.75206 };
 
 const Map = () => {
-  //   return <h1>test</h1>;
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
@@ -43,6 +43,19 @@ const Map = () => {
   if (!isLoaded) {
     return <SkeletonText />;
   }
+
+  var position;
+
+  navigator?.geolocation.getCurrentPosition(
+    ({ coords: { latitude: lat, longitude: lng } }) => {
+      const pos = { lat, lng };
+      //this.setState({currentPosition: pos})
+      
+      position = pos;
+      console.log(position)
+      console.log(center)
+    }
+  );
 
   async function calculateRoute() {
     if (originRef.current.value === "" || destiantionRef.current.value === "") {
@@ -80,7 +93,7 @@ const Map = () => {
       <Box position="absolute" left={0} top={0} h="100%" w="100%">
         {/* Google Map Box */}
         <GoogleMap
-          center={center}
+          center={position}
           zoom={14}
           mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
@@ -91,7 +104,7 @@ const Map = () => {
           }}
           onLoad={(map) => setMap(map)}
         >
-          <Marker position={center} />
+          <Marker position={position} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
@@ -141,8 +154,8 @@ const Map = () => {
             icon={<FaLocationArrow />}
             isRound
             onClick={() => {
-              map.panTo(center);
-              map.setZoom(15);
+              map.panTo(position);
+              map.setZoom(20);
             }}
           />
         </HStack>
