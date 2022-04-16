@@ -1,0 +1,67 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #202020;
+    position: relative;
+}
+.phoneScreen {
+    height: 1000px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .onBoardingBackground {
+    background-image: url(/public/onboarding-background.svg);
+    background-color: #011669;
+  }
+  
+  .onBoardingBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .onBoardingBackground p {
+    margin-bottom: 0px;
+  }
+  
+  .loginBanner {
+    position: relative;
+    margin-top: 176px;
+  }
+  
+  
+#bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 50vh;
+    width: 100%;
+  }
+  
+  #loginText{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #loginAggieText{
+    font-size: 1.5rem;
+    color: #FFFACD;
+  }
+  
+  #registerText{
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    color: white;
+  }
