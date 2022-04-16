@@ -6,7 +6,7 @@ import {
   Week,
   Month,
 } from "@syncfusion/ej2-react-schedule";
-import "./Calender.css";
+import "./Calendar.css";
 
 import { registerLicense } from "@syncfusion/ej2-base";
 registerLicense(
