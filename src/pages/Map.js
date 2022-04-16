@@ -50,10 +50,10 @@ const Map = () => {
     ({ coords: { latitude: lat, longitude: lng } }) => {
       const pos = { lat, lng };
       //this.setState({currentPosition: pos})
-      
+
       position = pos;
-      console.log(position)
-      console.log(center)
+      console.log(position);
+      console.log(center);
     }
   );
 
@@ -67,7 +67,7 @@ const Map = () => {
       origin: originRef.current.value,
       destination: destiantionRef.current.value,
       // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.DRIVING,
+      travelMode: google.maps.TravelMode.WALKING,
     });
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
@@ -93,7 +93,7 @@ const Map = () => {
       <Box position="absolute" left={0} top={0} h="100%" w="100%">
         {/* Google Map Box */}
         <GoogleMap
-          center={position}
+          center={center}
           zoom={14}
           mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
@@ -104,7 +104,8 @@ const Map = () => {
           }}
           onLoad={(map) => setMap(map)}
         >
-          <Marker position={position} />
+            
+          <Marker position={center} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}

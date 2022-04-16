@@ -1,62 +1,94 @@
-/*global google*/
-import React from "react";
+import React, { Component } from "react";
 
-import { GoogleMap, StandaloneSearchBox, Marker } from "@react-google-maps/api";
+export default class Map2 extends Component {
+  constructor(props) {
+    super(props);
 
-let markerArray = [];
-class Map2 extends React.Component {
-  state = {
-    currentLocation: { lat: 0, lng: 0 },
-    markers: [],
-    bounds: null,
-  };
+    this.state = {
+      response: null,
+      travelMode: "DRIVING",
+      origin: "",
+      destination: "",
+    };
 
-  onMapLoad = (map) => {
-    navigator?.geolocation.getCurrentPosition(
-      ({ coords: { latitude: lat, longitude: lng } }) => {
-        const pos = { lat, lng };
-        this.setState({ currentLocation: pos });
+    this.directionsCallback = this.directionsCallback.bind(this);
+    this.checkDriving = this.checkDriving.bind(this);
+    this.checkBicycling = this.checkBicycling.bind(this);
+    this.checkTransit = this.checkTransit.bind(this);
+    this.checkWalking = this.checkWalking.bind(this);
+    this.getOrigin = this.getOrigin.bind(this);
+    this.getDestination = this.getDestination.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
+  }
+
+  directionsCallback(response) {
+    console.log(response);
+
+    if (response !== null) {
+      if (response.status === "OK") {
+        this.setState(() => ({
+          response,
+        }));
+      } else {
+        console.log("response: ", response);
       }
-    );
-    google.maps.event.addListener(map, "bounds_changed", () => {
-      console.log(map.getBounds());
-      this.setState({ bounds: map.getBounds() });
-    });
-  };
-
-  onSBLoad = (ref) => {
-    this.searchBox = ref;
-  };
-
-  onPlacesChanged = () => {
-    markerArray = [];
-    let results = this.searchBox.getPlaces();
-    for (let i = 0; i < results.length; i++) {
-      let place = results[i].geometry.location;
-      markerArray.push(place);
     }
-    this.setState({ markers: markerArray });
-    console.log(markerArray);
-  };
+  }
+
+  checkDriving({ target: { checked } }) {
+    checked &&
+      this.setState(() => ({
+        travelMode: "DRIVING",
+      }));
+  }
+
+  checkBicycling({ target: { checked } }) {
+    checked &&
+      this.setState(() => ({
+        travelMode: "BICYCLING",
+      }));
+  }
+
+  checkTransit({ target: { checked } }) {
+    checked &&
+      this.setState(() => ({
+        travelMode: "TRANSIT",
+      }));
+  }
+
+  checkWalking({ target: { checked } }) {
+    checked &&
+      this.setState(() => ({
+        travelMode: "WALKING",
+      }));
+  }
+
+  getOrigin(ref) {
+    this.origin = ref;
+  }
+
+  getDestination(ref) {
+    this.destination = ref;
+  }
+
+  onClick() {
+    if (this.origin.value !== "" && this.destination.value !== "") {
+      this.setState(() => ({
+        origin: this.origin.value,
+        destination: this.destination.value,
+      }));
+    }
+  }
+
+  onMapClick(...args) {
+    console.log("onClick args: ", args);
+  }
 
   render() {
-    return (
-      <div>
-        <div>
-          <GoogleMap
-            center={this.state.currentLocation}
-            zoom={10}
-            onLoad={(map) => this.onMapLoad(map)}
-            mapContainerStyle={{ height: "400px", width: "800px" }}
-          >
-            {this.state.markers.map((mark, index) => (
-              <Marker key={index} position={mark} />
-            ))}
-          </GoogleMap>
-        </div>
-      </div>
-    );
+    return;
+    <div>
+     
+    </div>;
   }
 }
-
-export default Map2;
