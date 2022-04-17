@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
+import NavBar from "./Navbar"
 import "./Setting.css";
-import "./Home.css";
 import SettingButton from "./SettingButton";
 
 const Setting = () => {
@@ -13,7 +12,6 @@ const Setting = () => {
   );
 
   return (
-    <div class="container h-100">
       <div class="settingBackground">
         <div class="onBoardingBanner">
 
@@ -28,9 +26,9 @@ const Setting = () => {
             <SettingButton name="ECS 188"></SettingButton>
           </div>
           <button class="aBtn" onClick={handleOnClick}> <p id="registerText">Logout</p></button>
-        </div>
+      </div> 
+      <div id="navbarPosition" class="navbarSetting"><NavBar></NavBar></div>
       </div>
-    </div>
   );
 };
 

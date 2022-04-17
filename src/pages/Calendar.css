@@ -1,1 +1,16 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
+
+.navbarSetting{
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(224,224,224);
+        border-radius:lg;
+        box-shadow: 0 0 10px #000000;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    #navbarCalendar{
+        position: fixed;
+        bottom: 0;
+    }

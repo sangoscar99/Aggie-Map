@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -12,6 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
+import NavBar from "./Navbar"
 
 import {
   useJsApiLoader,
@@ -25,17 +26,6 @@ import {
 const center = { lat: 38.53455, lng: -121.75206 };
 
 const Map = () => {
-
-  const navigate = useNavigate();
-  const handleOnClickCalender = useCallback(
-    () => navigate("/calendar", { replace: true }),
-    [navigate]
-  );
-
-  const handleOnClickSetting = useCallback(
-    () => navigate("/setting", { replace: true }),
-    [navigate]
-  );
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -196,7 +186,8 @@ const Map = () => {
       <Box
         position="absolute"
         bottom={0}
-        p={2}
+        paddingTop={2}
+        paddingBottom={2}
         width="450px"
         borderRadius="lg"
         bgColor="LightGray"
@@ -204,7 +195,7 @@ const Map = () => {
         zIndex="1"
         justifyContent="bottom"
       >
-        
+        <NavBar></NavBar>
       </Box>
     </Flex>
   );
