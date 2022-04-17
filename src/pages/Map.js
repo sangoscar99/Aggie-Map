@@ -58,13 +58,14 @@ const Map = () => {
   );
 
   async function calculateRoute() {
-    if (originRef.current.value === "" || destiantionRef.current.value === "") {
+
+    if (destiantionRef.current.value === "") {
       return;
     }
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
-      origin: originRef.current.value,
+      origin: position,
       destination: destiantionRef.current.value,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.WALKING,
@@ -78,9 +79,24 @@ const Map = () => {
     setDirectionsResponse(null);
     setDistance("");
     setDuration("");
-    originRef.current.value = "";
     destiantionRef.current.value = "";
   }
+
+  const latLongBound = {
+    north: 30,
+    south: 31,
+    east: 30,
+    west: 31,
+  };
+
+  const bounds1 = new window.google.maps.LatLngBounds(
+    new window.google.maps.LatLng(38.5, 38.57),
+    new window.google.maps.LatLng(-121.67, -121.81)
+  );
+
+  const restrictCountry = {
+    country: "US",
+  };
 
   return (
     <Flex
@@ -104,40 +120,27 @@ const Map = () => {
           }}
           onLoad={(map) => setMap(map)}
         >
-            
           <Marker position={center} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
         </GoogleMap>
       </Box>
-      <Box
-        p={4}
+      <Box position = "absolute" bottom ={20}
+        p={2}
         borderRadius="lg"
-        m={4}
         bgColor="white"
         shadow="base"
-        minW="container.md"
         zIndex="1"
+        justifyContent= "bottom"
       >
         <HStack spacing={2} justifyContent="space-between">
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input type="text" placeholder="Origin" ref={originRef} />
-            </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                type="text"
-                placeholder="Destination"
-                ref={destiantionRef}
-              />
-            </Autocomplete>
-          </Box>
+          <Autocomplete restrictions={restrictCountry} bounds={bounds1}>
+            <Input type="text" placeholder="Destination" ref={destiantionRef} />
+          </Autocomplete>
 
           <ButtonGroup>
-            <Button colorScheme="pink" type="submit" onClick={calculateRoute}>
+            <Button background="#2C3751" color = "white" type="submit" onClick={calculateRoute}>
               Calculate Route
             </Button>
             <IconButton
@@ -147,7 +150,7 @@ const Map = () => {
             />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} mt={4} justifyContent="space-between">
+        <HStack spacing={4} mt={4} paddingLeft={4} justifyContent="space-between">
           <Text>Distance: {distance} </Text>
           <Text>Duration: {duration} </Text>
           <IconButton
