@@ -34,8 +34,6 @@ import Map2 from "./pages/Map2";
 export default function App() {
   return (
     <div>
-     
-      <h1>asda</h1>
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
