@@ -1,0 +1,40 @@
+
+.settingBackground{
+    width: 450px;
+    height: 920px;
+    background-color: white;
+}
+
+#buttonsDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    width: 88%;
+    height: 100%;
+}
+#settingTitle{
+    font-size: 30px;
+    font-weight: bold;
+}
+#notification{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    align-content: flex-start;
+    font-size: 1.1rem;
+    margin-left: 60px;
+}
+
+.classButton{
+
+   display:flex;
+   justify-content: space-between;
+    
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 2px solid #2C3751;
+    border-radius: 15px;
+
+}

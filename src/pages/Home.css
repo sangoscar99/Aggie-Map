@@ -6,7 +6,7 @@
   position: relative;
 }
 .phoneScreen {
-  height: 850px;
+  height: 920px;
   width: 450px;
   display: flex;
   flex-direction: column;
