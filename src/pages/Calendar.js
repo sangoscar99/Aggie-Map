@@ -1,4 +1,5 @@
 import React from "react";
+import ECS150 from "./ECS150"
 import {
   Inject,
   ScheduleComponent,
@@ -52,9 +53,9 @@ const Calendar = () => {
     <div>
       Calendar
       <ScheduleComponent
-        selectedDate={new Date(2019, 0, 10)}
         allowInline={false}
         actionComplete={processdata(userEvents)}
+        eventSettings={{ dataSource: ECS150 }}
       >
         <Inject services={[Day, Week, Month]} />
       </ScheduleComponent>

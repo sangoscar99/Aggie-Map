@@ -1,0 +1,24 @@
+[
+    {
+      "Subject": "ECS 150",
+      "Location": "Shield Library",
+      "StartTime": "2022-04-18T09:00:00.000Z",
+      "EndTime": "2022-04-18T17:00:00.000Z",
+      "IsAllDay": false,
+      "StartTimezone": null,
+      "EndTimezone": null,
+      "RecurrenceRule": "FREQ=WEEKLY;BYDAY=MO,WE,FR;INTERVAL=1;",
+      "Id": 1
+    },
+    {
+      "Subject": "ECS 162",
+      "Location": "Wellman Hall",
+      "StartTime": "2022-04-19T09:00:00.000Z",
+      "EndTime": "2022-04-19T12:00:00.000Z",
+      "IsAllDay": false,
+      "StartTimezone": null,
+      "EndTimezone": null,
+      "RecurrenceRule": "FREQ=WEEKLY;BYDAY=TU,TH;INTERVAL=1;",
+      "Id": 2
+    }
+  ]

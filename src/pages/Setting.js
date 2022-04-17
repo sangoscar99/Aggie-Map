@@ -21,8 +21,7 @@ const Setting = () => {
 
           <div id="buttonsDiv">
             <SettingButton name="ECS 150"></SettingButton>
-            <SettingButton name="ECS 120"></SettingButton>
-            <SettingButton name="ECS 188"></SettingButton>
+            <SettingButton name="ECS 162"></SettingButton>
           </div>
           <button class="aBtn" onClick={handleOnClick}> <p id="registerText">Logout</p></button>
       </div> 

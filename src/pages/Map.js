@@ -2,6 +2,7 @@ import React, { useRef, useState, useCallback } from "react";
 import "./Home.css";
 import Switch from "react-ios-switch";
 import SettingButton from "./SettingButton";
+import ECS150 from "./ECS150";
 import {
   Box,
   Button,
@@ -15,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes,FaWalking, FaBicycle } from "react-icons/fa";
 import NavBar from "./Navbar"
+
 
 import {
   useJsApiLoader,
@@ -103,6 +105,17 @@ const Map = () => {
   };
 
 
+  function fillClassLoc(location) {
+    console.log("test");
+
+    console.log(location.Location);
+    //  var test = location
+    //  console.log(test.location)
+    if (location.Location != null) {
+      console.log(location);
+      destiantionRef.current.value = location.Location;
+    }
+  }
 
   return (
     <Flex
@@ -143,6 +156,24 @@ const Map = () => {
         zIndex="1"
         justifyContent="bottom"
       >
+        <HStack justifyContent="space-around" mt={4} paddingBottom={2} >
+        <Button
+              background="#2C3751"
+              color="white"
+              type="submit"
+              onClick={() => fillClassLoc(ECS150[0])}
+            >
+              {ECS150[0].Subject}
+            </Button>
+            <Button
+              background="#2C3751"
+              color="white"
+              type="submit"
+              onClick={() => fillClassLoc(ECS150[1])}
+            >
+              {ECS150[1].Subject}
+            </Button>
+        </HStack>
         <HStack justifyContent="center" >
           <Autocomplete restrictions={restrictCountry} bounds={bounds1}>
             <Input type="text" placeholder="Destination" width="300px" ref={destiantionRef} />
@@ -196,6 +227,7 @@ const Map = () => {
             }}
           />
         </HStack>
+        
       </Box>
     
       <Box
