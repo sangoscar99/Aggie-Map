@@ -20,8 +20,8 @@ const Calendar = () => {
       <ScheduleComponent>
         <Inject services={[Day, Week, Month]} />
       </ScheduleComponent>
-      
     </div>
+
   );
 };
 
