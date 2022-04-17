@@ -25,6 +25,7 @@ import {
 const center = { lat: 38.53455, lng: -121.75206 };
 
 const Map = () => {
+
   const navigate = useNavigate();
   const handleOnClickCalender = useCallback(
     () => navigate("/calendar", { replace: true }),
