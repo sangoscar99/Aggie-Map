@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 import {
   Box,
   Button,
@@ -58,7 +59,6 @@ const Map = () => {
   );
 
   async function calculateRoute() {
-
     if (destiantionRef.current.value === "") {
       return;
     }
@@ -103,15 +103,16 @@ const Map = () => {
       position="relative"
       flexDirection="column"
       alignItems="center"
+      justifyContent="center"
       h="100vh"
       w="100vw"
     >
-      <Box position="absolute" left={0} top={0} h="100%" w="100%">
+      <Box>
         {/* Google Map Box */}
         <GoogleMap
           center={center}
           zoom={14}
-          mapContainerStyle={{ width: "100%", height: "100%" }}
+          mapContainerStyle={{ width: "450px", height: "850px" }}
           options={{
             zoomControl: false,
             streetViewControl: false,
@@ -126,13 +127,15 @@ const Map = () => {
           )}
         </GoogleMap>
       </Box>
-      <Box position = "absolute" bottom ={20}
+      <Box
+        position="absolute"
+        top={10}
         p={2}
         borderRadius="lg"
-        bgColor="white"
+        bgColor="LightGray"
         shadow="base"
         zIndex="1"
-        justifyContent= "bottom"
+        justifyContent="bottom"
       >
         <HStack spacing={2} justifyContent="space-between">
           <Autocomplete restrictions={restrictCountry} bounds={bounds1}>
@@ -140,7 +143,12 @@ const Map = () => {
           </Autocomplete>
 
           <ButtonGroup>
-            <Button background="#2C3751" color = "white" type="submit" onClick={calculateRoute}>
+            <Button
+              background="#2C3751"
+              color="white"
+              type="submit"
+              onClick={calculateRoute}
+            >
               Calculate Route
             </Button>
             <IconButton
@@ -150,7 +158,12 @@ const Map = () => {
             />
           </ButtonGroup>
         </HStack>
-        <HStack spacing={4} mt={4} paddingLeft={4} justifyContent="space-between">
+        <HStack
+          spacing={4}
+          mt={4}
+          paddingLeft={4}
+          justifyContent="space-between"
+        >
           <Text>Distance: {distance} </Text>
           <Text>Duration: {duration} </Text>
           <IconButton

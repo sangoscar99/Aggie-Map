@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 function Login() {
+  const navigate = useNavigate();
+  
   const [loginData, setLoginData] = useState(
     localStorage.getItem("loginData")
       ? JSON.parse(localStorage.getItem("loginData"))
@@ -22,17 +25,17 @@ function Login() {
         "Content-Type": "application/json",
       },
     });
-
+    
     const data = await res.json();
     setLoginData(data);
     localStorage.setItem("loginData", JSON.stringify(data));
+    window.location.href = "/map";
   };
   const handleLogout = () => {
     localStorage.removeItem("loginData");
     setLoginData(null);
   };
 
-    
   return (
     <div class="container h-100">
       <div class="phoneScreen onBoardingBackground">
@@ -41,11 +44,11 @@ function Login() {
           <p id="loginAggieText"> Welcome to Aggie Map!</p>
           <div id="loginText">
             <p id="registerText"> Log in/Register</p>
-            <div>
+            <div >
               {loginData ? (
-                <div>
-                  <h3>You logged in as {loginData.email}</h3>
-                  <button onClick={handleLogout}>Logout</button>
+                <div class="flex" id="registerText">
+                  <p>You logged in as {loginData.email}</p>
+                  <button class="aBtn" onClick={handleLogout}>Logout</button>
                 </div>
               ) : (
                 <GoogleLogin

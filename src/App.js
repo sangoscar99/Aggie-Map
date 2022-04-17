@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 
 // new
@@ -31,6 +31,7 @@ import Calendar from "./pages/Calendar";
 import Setting from "./pages/Setting";
 import Map2 from "./pages/Map2";
 
+
 export default function App() {
   return (
     <div>
@@ -43,7 +44,7 @@ export default function App() {
           <Route path="/calendar" element={<Calendar />}></Route>
           <Route path="/map2" element={<Map2 />}></Route>
         </Routes>
-      </Router>
+        </Router>
     </div>
   );
 }

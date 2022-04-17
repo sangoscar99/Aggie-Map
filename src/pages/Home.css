@@ -65,3 +65,28 @@
   padding-bottom: 5px;
   color: white;
 }
+
+.flex{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#flex{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aBtn{
+  padding:5px 10px;
+  text-decoration:none;
+  color:white;
+  background-color:#404040;
+  border:1px solid transparent;
+  border-radius: 12px;
+}
+.aBtn:hover {color:white;}
+.aBtn:active{border:1px solid orange;}
