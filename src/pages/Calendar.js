@@ -58,6 +58,7 @@ const Calendar = () => {
         <Inject services={[Day, Week, Month]} />
       </ScheduleComponent>
     </div>
+
   );
 };
 
