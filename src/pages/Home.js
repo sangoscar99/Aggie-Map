@@ -1,13 +1,12 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useCallback} from 'react';
+import {useNavigate} from 'react-router-dom';
 import "./Home.css";
 
 export default function Home() {
-  const navigate = useNavigate();
-  const handleOnClick = useCallback(
-    () => navigate("/login", { replace: true }),
-    [navigate]
-  );
+    const navigate = useNavigate();
+  const handleOnClick = useCallback(() => navigate("/login", { replace: true }), [
+    navigate,
+  ]);
 
   return (
     <div class="container h-100">
@@ -20,4 +19,5 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
