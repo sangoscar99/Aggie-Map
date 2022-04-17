@@ -1,5 +1,7 @@
 import React, { useRef, useState, useCallback } from "react";
-
+import "./Home.css";
+import Switch from "react-ios-switch";
+import SettingButton from "./SettingButton";
 import {
   Box,
   Button,
@@ -11,7 +13,7 @@ import {
   SkeletonText,
   Text,
 } from "@chakra-ui/react";
-import { FaLocationArrow, FaTimes } from "react-icons/fa";
+import { FaLocationArrow, FaTimes,FaWalking, FaBicycle } from "react-icons/fa";
 import NavBar from "./Navbar"
 
 import {
@@ -26,7 +28,8 @@ import {
 const center = { lat: 38.53455, lng: -121.75206 };
 
 const Map = () => {
-
+  // SettingButton 
+  const [checked, setChecked] = useState("");
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
@@ -56,7 +59,6 @@ const Map = () => {
 
       position = pos;
       console.log(position);
-      console.log(center);
     }
   );
 
@@ -70,7 +72,7 @@ const Map = () => {
       origin: position,
       destination: destiantionRef.current.value,
       // eslint-disable-next-line no-undef
-      travelMode: google.maps.TravelMode.WALKING,
+      travelMode: checked? google.maps.TravelMode.BICYCLING : google.maps.TravelMode.WALKING,
     });
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
@@ -100,7 +102,7 @@ const Map = () => {
     country: "US",
   };
 
-  
+
 
   return (
     <Flex
@@ -116,7 +118,7 @@ const Map = () => {
         <GoogleMap
           center={center}
           zoom={14}
-          mapContainerStyle={{ width: "450px", height: "850px" }}
+          mapContainerStyle={{ width: "390px", height: "844px" }}
           options={{
             zoomControl: false,
             streetViewControl: false,
@@ -125,7 +127,6 @@ const Map = () => {
           }}
           onLoad={(map) => setMap(map)}
         >
-          <Marker position={center} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
@@ -142,10 +143,28 @@ const Map = () => {
         zIndex="1"
         justifyContent="bottom"
       >
-        <HStack spacing={2} justifyContent="space-between">
+        <HStack justifyContent="center" >
           <Autocomplete restrictions={restrictCountry} bounds={bounds1}>
-            <Input type="text" placeholder="Destination" ref={destiantionRef} />
-          </Autocomplete>
+            <Input type="text" placeholder="Destination" width="300px" ref={destiantionRef} />
+          </Autocomplete> 
+          <IconButton
+              aria-label="center back"
+              icon={<FaTimes />}
+              onClick={clearRoute}
+            />
+        </HStack>
+        
+        <HStack></HStack>
+        <HStack mt={4}
+          paddingLeft={4} spacing={2} justifyContent="space-around">
+          <HStack> <p>Biking</p>
+         <Switch
+              checked={checked}
+              onChange={() => {
+                setChecked(!checked);
+              }}
+          /></HStack>
+          
 
           <ButtonGroup>
             <Button
@@ -156,11 +175,7 @@ const Map = () => {
             >
               Calculate Route
             </Button>
-            <IconButton
-              aria-label="center back"
-              icon={<FaTimes />}
-              onClick={clearRoute}
-            />
+            
           </ButtonGroup>
         </HStack>
         <HStack
@@ -182,12 +197,12 @@ const Map = () => {
           />
         </HStack>
       </Box>
-
+    
       <Box
-        position="absolute"
+        position= "absolute"
         bottom={0}
         paddingTop={2}
-        paddingBottom={2}
+        paddingBottom={5}
         width="450px"
         borderRadius="lg"
         bgColor="LightGray"
@@ -197,7 +212,7 @@ const Map = () => {
       >
         <NavBar></NavBar>
       </Box>
-    </Flex>
+        </Flex>
   );
 };
 

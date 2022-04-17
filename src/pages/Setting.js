@@ -14,7 +14,6 @@ const Setting = () => {
   return (
       <div class="settingBackground">
         <div class="onBoardingBanner">
-
           <h1 id="settingTitle">Setting</h1>
           <div id="notification">
             <p>Notifications</p>

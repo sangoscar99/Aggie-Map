@@ -1,19 +1,8 @@
-.settingBackground{
-    width: 450px;
-    height: 844px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 #buttonsDiv{
     display: flex;
     flex-direction: column;
     padding: 10px;
-
-    width: 88%;
-    height: 100%;
+    width: 400px;
 }
 #settingTitle{
     font-size: 30px;
@@ -49,8 +38,15 @@
 
 #navbarPosition{
     position: fixed;
-    bottom: 130px;
+    bottom: 0;
     padding-left: 28px;
 }
 
+.settingBackground{
+    width: 450px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
